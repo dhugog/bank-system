@@ -8,9 +8,16 @@ use Illuminate\Contracts\Pagination\Paginator;
 
 class CheckRepositoryEloquent implements CheckRepository
 {
+    private $model;
+
+    public function __construct(Check $check)
+    {
+        $this->model = $check;
+    }
+
     public function getPaginatedList(int $perPage, array $filters = [], array $sort = []): Paginator
     {
-        return Check::when(isset($filters['account_id']), function ($query) use ($filters) {
+        return $this->model->when(isset($filters['account_id']), function ($query) use ($filters) {
             return $query->where('account_id', $filters['account_id']);
         })
             ->when(isset($filters['status']), function ($query) use ($filters) {
@@ -29,7 +36,7 @@ class CheckRepositoryEloquent implements CheckRepository
 
     public function create($attributes): Check
     {
-        return Check::create($attributes);
+        return $this->model->create($attributes);
     }
 
     public function update(Check $check, $attributes): void
