@@ -7,6 +7,7 @@ const authApi = api.injectEndpoints({
         url: "/user",
         method: "GET",
       }),
+      providesTags: ["User"],
     }),
   }),
   overrideExisting: false,

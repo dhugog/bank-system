@@ -1,4 +1,4 @@
-import { Container, Drawer, IconButton, Typography } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import AddIcon from "@mui/icons-material/Add";
 import {
@@ -11,7 +11,7 @@ import PaginatedList from "../../components/PaginatedList";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppPagination } from "../../app/hooks";
 import { toggleSideMenu } from "../../features/side-menu/sideMenuSlice";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 const Dashboard: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -122,7 +122,7 @@ const Dashboard: React.FC = () => {
         </Typography>
       )}
 
-      {!isFetching && transactions?.length && (
+      {!isFetching && (
         <PaginatedList
           onNext={() => setTransactionsPage(transactionsPage + 1)}
           hasMore={hasNextPage}

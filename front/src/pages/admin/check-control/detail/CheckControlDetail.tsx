@@ -24,6 +24,10 @@ import {
 import PersonIcon from "@mui/icons-material/Person";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
+import EmailIcon from "@mui/icons-material/Email";
+import NumbersIcon from "@mui/icons-material/Numbers";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import { toast } from "react-toastify";
 
 const CheckControlDetail = () => {
   const [image, setImage] = useState("");
@@ -100,7 +104,7 @@ const CheckControlDetail = () => {
         <ListItem>
           <ListItemAvatar>
             <Avatar>
-              <PersonIcon />
+              <EmailIcon />
             </Avatar>
           </ListItemAvatar>
 
@@ -123,7 +127,7 @@ const CheckControlDetail = () => {
         <ListItem>
           <ListItemAvatar>
             <Avatar>
-              <PersonIcon />
+              <NumbersIcon />
             </Avatar>
           </ListItemAvatar>
 
@@ -146,7 +150,7 @@ const CheckControlDetail = () => {
         <ListItem>
           <ListItemAvatar>
             <Avatar>
-              <PersonIcon />
+              <AttachMoneyIcon />
             </Avatar>
           </ListItemAvatar>
 
@@ -180,7 +184,20 @@ const CheckControlDetail = () => {
             onClick={() =>
               reject(Number(id))
                 .unwrap()
-                .then(() => navigate("/admin/checks"))
+                .then(() => {
+                  toast.success("Check rejected with success!", {
+                    position: "bottom-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                  });
+
+                  navigate("/admin/checks");
+                })
             }
           >
             <ThumbDownIcon fontSize="small" sx={{ mr: 0.5 }} />
@@ -195,7 +212,20 @@ const CheckControlDetail = () => {
             onClick={() =>
               approve(Number(id))
                 .unwrap()
-                .then(() => navigate("/admin/checks"))
+                .then(() => {
+                  toast.success("Check approved with success!", {
+                    position: "bottom-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                  });
+
+                  navigate("/admin/checks");
+                })
             }
           >
             <ThumbUpIcon fontSize="small" sx={{ mr: 0.5 }} />

@@ -18,6 +18,9 @@ import PaymentsIcon from "@mui/icons-material/Payments";
 import RuleIcon from "@mui/icons-material/Rule";
 import { useNavigate } from "react-router-dom";
 import { useGetUserDetailsQuery } from "../app/services/auth.service";
+import { logout } from "../features/auth/authSlice";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { api } from "../app/api";
 
 const SideMenu = () => {
   const { open } = useAppSelector((state) => state.sideMenu);
@@ -73,6 +76,22 @@ const SideMenu = () => {
                 <PaymentsIcon />
               </ListItemIcon>
               <ListItemText primary={"Checks"} />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem key={"logout"} disablePadding>
+            <ListItemButton
+              onClick={() => {
+                dispatch(logout());
+                dispatch(api.util.resetApiState());
+
+                navigate("/login");
+              }}
+            >
+              <ListItemIcon>
+                <LogoutIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Logout"} />
             </ListItemButton>
           </ListItem>
 

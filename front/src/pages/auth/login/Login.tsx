@@ -1,7 +1,6 @@
-import { Button, Container, TextField, Typography } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { login } from "../../../features/auth/authActions";
 
@@ -12,28 +11,13 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { error, token } = useAppSelector((state) => state.auth);
+  const { token } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
     if (token) {
       navigate("/");
     }
   }, [token, navigate]);
-
-  useEffect(() => {
-    if (error) {
-      toast.error(error, {
-        position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    }
-  }, [error]);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

@@ -1,10 +1,4 @@
-import {
-  Button,
-  Container,
-  IconButton,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, IconButton, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import CustomCurrencyInput from "../../../components/NumberFormatCustom";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -16,6 +10,7 @@ import { useCreateCheckMutation } from "../../../app/services/check.service";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../app/hooks";
 import { toggleSideMenu } from "../../../features/side-menu/sideMenuSlice";
+import { toast } from "react-toastify";
 
 const CheckDeposit: React.FC = () => {
   const [amount, setAmount] = useState<number | null>(0);
@@ -49,7 +44,20 @@ const CheckDeposit: React.FC = () => {
 
     createCheck(formData)
       .unwrap()
-      .then(() => navigate("/check"));
+      .then(() => {
+        toast.success("Check created successfully", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+
+        navigate("/checks");
+      });
   };
 
   return (
@@ -123,7 +131,6 @@ const CheckDeposit: React.FC = () => {
           label="Description"
           name="description"
           autoComplete="description"
-          autoFocus
           value={description}
           onChange={(event) => setDescription(event.target.value)}
         />

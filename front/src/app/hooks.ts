@@ -1,6 +1,6 @@
 import { QueryDefinition } from "@reduxjs/toolkit/dist/query";
 import { UseQuery } from "@reduxjs/toolkit/dist/query/react/buildHooks";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import type { RootState, AppDispatch } from "./store";
 
@@ -54,7 +54,7 @@ export const useAppPagination = (
       }
     }
 
-    return arr;
+    return arr.filter((item) => item);
   }, [perPage, page, lastPage, currentPage, nextPage]);
 
   const hasNextPage = useMemo(() => {

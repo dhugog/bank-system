@@ -8,14 +8,21 @@ import {
   isRejectedWithValue,
 } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import sideMenuReducer from "../features/side-menu/sideMenuSlice";
 import authReducer from "../features/auth/authSlice";
+import sideMenuReducer from "../features/side-menu/sideMenuSlice";
 import { api } from "./api";
 
 export const rtkQueryErrorLogger: Middleware =
   (api: MiddlewareAPI) => (next) => (action) => {
     if (isRejectedWithValue(action)) {
-      toast.error(action.payload.data.message ?? action.error.message, {
+      const message =
+        typeof action.payload === "string"
+          ? action.payload
+          : action.payload?.data?.message ??
+            action.payload?.message ??
+            action.error.message;
+
+      toast.error(message, {
         position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
