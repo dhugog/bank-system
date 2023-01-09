@@ -13,7 +13,7 @@ import { toggleSideMenu } from "../../../features/side-menu/sideMenuSlice";
 import { toast } from "react-toastify";
 
 const CheckDeposit: React.FC = () => {
-  const [amount, setAmount] = useState<number | null>(0);
+  const [amount, setAmount] = useState<number | null>(null);
   const [description, setDescription] = useState("");
   const [image, setImage] = useState<File | null>(null);
 
@@ -114,6 +114,9 @@ const CheckDeposit: React.FC = () => {
           inputProps={{
             onValueChange: (value: number) => setAmount(value),
             placeholder: "Please enter the check amount",
+          }}
+          InputLabelProps={{
+            shrink: true,
           }}
         />
 

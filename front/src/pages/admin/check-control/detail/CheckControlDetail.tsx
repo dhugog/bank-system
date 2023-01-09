@@ -43,7 +43,7 @@ const CheckControlDetail = () => {
 
   useEffect(() => {
     if (token && !image) {
-      fetch("http://localhost/api/checks/1/image", {
+      fetch(`${process.env.REACT_APP_API_URL}/checks/${id}/image`, {
         method: "GET",
         headers: {
           Authorization: "Bearer " + token,

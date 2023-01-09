@@ -27,7 +27,11 @@ const SideMenu = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const { data: user } = useGetUserDetailsQuery();
+  const { token } = useAppSelector((state) => state.auth);
+
+  const { data: user } = useGetUserDetailsQuery(undefined, {
+    skip: !token,
+  });
 
   const permissions = user?.roles
     .flatMap((role: any) => role.permissions)

@@ -9,7 +9,7 @@ export const register = createAsyncThunk(
   ) => {
     try {
       const { data } = await axios.post(
-        "http://localhost/api/auth/register",
+        `${process.env.REACT_APP_API_URL}/auth/register`,
         args
       );
 
@@ -29,7 +29,7 @@ export const login = createAsyncThunk(
   async (args: { email: string; password: string }, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
-        "http://localhost/api/auth/login",
+        `${process.env.REACT_APP_API_URL}/auth/login`,
         args
       );
 
