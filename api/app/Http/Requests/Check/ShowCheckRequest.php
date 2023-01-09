@@ -17,10 +17,17 @@ class ShowCheckRequest extends FormRequest
         return $this->user()->tokenCan('check:list-all') || $this->check->account->user_id === $this->user()->id;
     }
 
+    public function rules()
+    {
+        return [];
+    }
+
     public function withValidator(Validator $validator)
     {
-        $validator->after(function ($validator) {
-            $this->merge(compact('check'));
+        $validator->after(function () {
+            $this->merge([
+                'check' => $this->check,
+            ]);
         });
     }
 }

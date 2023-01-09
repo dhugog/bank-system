@@ -1,0 +1,26 @@
+.header {
+    position: relative;
+    background-color: #BDE0FE;
+    color: #FFFFFF;
+    padding: 15px 20px;
+}
+
+.subHeader {
+    background-color: #BDE0FE;
+    color: #FFFFFF;
+    padding: 5px 20px;
+}
+
+.incomes {
+    display: flex;
+    justify-content: space-between;
+    background-color: #DAEFFF;
+    padding: 10px 20px;
+}
+
+.expenses {
+    display: flex;
+    justify-content: space-between;
+    background-color: #F1F9FE;
+    padding: 10px 20px;
+}

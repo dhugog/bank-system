@@ -13,6 +13,11 @@ class RejectCheckRequest extends FormRequest
         return $this->user()->tokenCan('check:reject');
     }
 
+    public function rules()
+    {
+        return [];
+    }
+
     public function withValidator(Validator $validator)
     {
         $validator->after(function ($validator) {

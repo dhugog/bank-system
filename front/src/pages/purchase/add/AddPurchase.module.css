@@ -1,0 +1,17 @@
+.header {
+    position: relative;
+    background-color: #F1F9FE;
+    color: #FFFFFF;
+    padding: 15px 20px;
+}
+
+.subHeader {
+    background-color: #F1F9FE;
+    color: #FFFFFF;
+    padding: 5px 20px;
+}
+
+.form {
+    width: 100%;
+    margin-top: 10px;
+}

@@ -1,0 +1,14 @@
+.header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background-color: #2A99FB;
+    color: #FFFFFF;
+    height: 80px;
+    padding-bottom: 20px;
+}
+
+.form {
+    width: 100%;
+    margin-top: 10px;
+}

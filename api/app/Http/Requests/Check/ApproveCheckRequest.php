@@ -13,6 +13,11 @@ class ApproveCheckRequest extends FormRequest
         return $this->user()->tokenCan('check:approve');
     }
 
+    public function rules()
+    {
+        return [];
+    }
+
     public function withValidator(Validator $validator)
     {
         $validator->after(function ($validator) {
